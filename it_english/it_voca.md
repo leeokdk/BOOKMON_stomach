@@ -3,6 +3,7 @@
 
 it 어휘 정리
 =============================================
+<hr>
 
 - UI Text
   - *configure* v.구성하다;설정하다 `configuration(구성)`
@@ -22,9 +23,11 @@ it 어휘 정리
   - *valid* a.유효한 `invalid(무효한)`
   - *verify* v.검증하다/확인하다 `정확한지 확인함. verification(확인)`
 
+<hr>
+
 - Commit message
   - *bump* v.(버전 번호를)올리다 `일반적으로 bump는 부딪히다 나 (사람을 장소로부터) 밀어내다 라는 의미`  
-  - *deprecated* a.교체 예정인;더이상 사용되지 않는 `동사 deprecate는 반대를 ㄹ표명한다는 의미. API 문서에서는 오래된 기능이어서 교체될 예정이라 사용이 권장되지 않을 경우에 쓴다.`
+  - *deprecated* a.교체 예정인;더이상 사용되지 않는 `동사 deprecate는 반대를 표명한다는 의미. API 문서에서는 오래된 기능이어서 교체될 예정이라 사용이 권장되지 않을 경우에 쓴다.`
   - *generic* a.범용의 n.제너릭 `명사로 쓰일 때 제너릭이라는 단어의 의미는 나중에 결정될 타입을 타입 매개변수를 통해 표시해서 프로그램의 범용성을 높일 수 있는 장치 또는 기법을 말한다.`
   - *improve* v.개선하다 `fix가 문제나 결함을 해결하는 데 반해, improve는 현 상태보다 조금 더 좋게 만든다는 의미`
   - *introduce* v.도입하다
@@ -42,12 +45,53 @@ it 어휘 정리
   - *get rid of* ~을 제거하다
   - *in favor of* ~을 위해;우선적으로;유리하게
 
+<hr>
+
 - API Document
+  - *argument* n.인수;인자 `일반 영어에서는 논의 라는 의미`
+  - *inherit* v.상속받다;승계하다 
+  - *initialize* v.초기화하다
+  - *integer* n.정수 `positive vs negative`
+  - *invoke* v.호출하다 `call과 유사`
+  - *locale* n.로케일 `지역과 관련된 시스템 설정문제로 보통은 언어와 국가명의 조합ko-KR으로 표현된다.`
+  - *note* n.주의 v.주의하다 `Note that~(~임에 주의)`
+  - *prefix* n.접두어 `suffix(접미어)`
+  - *specify* v.지정하다
+  - *summary* n.개요;요약 `detail(세부 설명)`
+  - *valid* a.유효한 `invalid(무효한)`
+  - *determine if* ~인지 아닌지 판별하다 `determine은 결심하다 결정하다는 의미이지만 if나 whether와 함께 쓰일 경우 판정하다는 뜻으로 쓰인다.`
+  - *See also* 여기도 참고 `다른 메소드 등을 참고할 필요가 있을 때 빈번하게 사용된다.`
+  - *the number of* ~의 수 `a number of(많은)`
+  - *whether or not* ~인지 아닌지. ~의 여부. 
+
+<hr>
+
 - TOS
+
+<hr>
+
 - Email
+
+<hr>
+
 - Review
+
+<hr>
+
 - News
+
+<hr>
+
 - Blog
+
+<hr>
+
 - Manual
+
+<hr>
+
 - Specify
+
+<hr>
+
 - QnA
