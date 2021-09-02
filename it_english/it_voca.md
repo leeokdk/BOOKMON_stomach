@@ -67,6 +67,44 @@ it 어휘 정리
 <hr>
 
 - TOS
+  - *agreement* n.합의;계약;협약
+  - *applicable* a.해당되는;적용되는
+  - *authorize* v.허가하다;권한을 부여하다; 인가하다
+  - *breach* v.(계약 등을) 파기하다;위반하다 `violate(파기,위반하다)`
+  - *collectively* ad.정리해서;총칭해서
+  - *comply* v.(명령이나 규칙에)따르다;준수하다 `compliance(n)`
+  - *condition* n.조건 `주로 terms and conditions로 함께 쓰이는 경우가 많다`
+  - *consent* n.동의 v.동의하다 `priop written consent(서면에 의한 사전동의)`
+  - *consequential* a.결과로 발생하는 `어떤 것의 결과로 발생한다는 의미`
+  - *disclaim* v.(책임을)부인하다;책임지지 않다 `disclaimer(부인,면책사항)`
+  - *discretion* n.재량 `in one's sole discretion(독자적인 재량)`
+  - *entity* n.법인 `entity 또는 legal entity는 법인을 의미`
+  - *expressly* ad.명시적으로
+  - *extent* n.범위;한도 `to the maximum(fullest) extent(최대한의 범위)`
+  - *govern* v.적용되다;지배하다 `governing law(준거법)`
+  - *grant* v.(권리를) 부여하다;허가하다
+  - *implied* a.묵시적;암묵적 `express(명시적)`
+  - *infringement* n.(권리 등의)침해
+  - *jurisdiction* n.관할권;사법권 `exclusive juridiction(전속 관할권)'
+  - *liability* n.책임 `표제어,소제목 으로 자주 보이는 항목명`
+  - *liable* a.책임이 있는 `배상책임이 있는 경우 자주 사용. responsible`
+  - *material* n.자료;데이터
+  - *obligation* n.의무
+  - *party* n.당사자 `일반적으로 파티 혹은 정당을 의미. third party(제3자)`
+  - *property* n.재산;소유권 `proprietary(소유권의)`
+  - *reserve* v.보유하다
+  - *restriction* n.제한;제약
+  - *subject* a.(승인 등을)받을 필요가 있다 `subject는 명사로 주제,주어,교과목 의미로도 많이 씀`
+  - *term* n.조건;약관;약정 `보통 terms의 복수형으로 쓰임. 기간, 전문용어의 이미도 있다`
+  - *violation* n.위반 
+  - *waiver* n.(권리 등의)포기;방기
+  - *warranty* n.보증
+  - *arising from* ~로부터 발생하다 `arising out of`
+  - *in accordance with* ~에 따라
+  - *in the event* ~의 경우에는 
+  - *set forth* 명기하다
+  - to the extent ~의 범위에
+  - with respect to ~에 관해
 
 <hr>
 
