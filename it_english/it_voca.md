@@ -67,15 +67,80 @@ it 어휘 정리
 <hr>
 
 - TOS
+  - *agreement* n.합의;계약;협약
+  - *applicable* a.해당되는;적용되는
+  - *authorize* v.허가하다;권한을 부여하다; 인가하다
+  - *breach* v.(계약 등을) 파기하다;위반하다 `violate(파기,위반하다)`
+  - *collectively* ad.정리해서;총칭해서
+  - *comply* v.(명령이나 규칙에)따르다;준수하다 `compliance(n)`
+  - *condition* n.조건 `주로 terms and conditions로 함께 쓰이는 경우가 많다`
+  - *consent* n.동의 v.동의하다 `priop written consent(서면에 의한 사전동의)`
+  - *consequential* a.결과로 발생하는 `어떤 것의 결과로 발생한다는 의미`
+  - *disclaim* v.(책임을)부인하다;책임지지 않다 `disclaimer(부인,면책사항)`
+  - *discretion* n.재량 `in one's sole discretion(독자적인 재량)`
+  - *entity* n.법인 `entity 또는 legal entity는 법인을 의미`
+  - *expressly* ad.명시적으로
+  - *extent* n.범위;한도 `to the maximum(fullest) extent(최대한의 범위)`
+  - *govern* v.적용되다;지배하다 `governing law(준거법)`
+  - *grant* v.(권리를) 부여하다;허가하다
+  - *implied* a.묵시적;암묵적 `express(명시적)`
+  - *infringement* n.(권리 등의)침해
+  - *jurisdiction* n.관할권;사법권 `exclusive juridiction(전속 관할권)'
+  - *liability* n.책임 `표제어,소제목 으로 자주 보이는 항목명`
+  - *liable* a.책임이 있는 `배상책임이 있는 경우 자주 사용. responsible`
+  - *material* n.자료;데이터
+  - *obligation* n.의무
+  - *party* n.당사자 `일반적으로 파티 혹은 정당을 의미. third party(제3자)`
+  - *property* n.재산;소유권 `proprietary(소유권의)`
+  - *reserve* v.보유하다
+  - *restriction* n.제한;제약
+  - *subject* a.(승인 등을)받을 필요가 있다 `subject는 명사로 주제,주어,교과목 의미로도 많이 씀`
+  - *term* n.조건;약관;약정 `보통 terms의 복수형으로 쓰임. 기간, 전문용어의 이미도 있다`
+  - *violation* n.위반 
+  - *waiver* n.(권리 등의)포기;방기
+  - *warranty* n.보증
+  - *arising from* ~로부터 발생하다 `arising out of`
+  - *in accordance with* ~에 따라
+  - *in the event* ~의 경우에는 
+  - *set forth* 명기하다
+  - *to the extent* ~의 범위에
+  - *with respect to* ~에 관해
 
 <hr>
 
 - Email
-
+  - *announce* v.발표하다
+  - *contact* v.연락하다 n.연락처
+  - *currently* ad.현재
+  - *discuss* v.논의하다
+  - *email* v.메일을 보내다 `email은 동사로 email us 또는 email me처럼 email 바로 뒤에 목적어에 해당하는 사람이 온다`
+  - *hesitate* v.망설이다;주저하다 `do not hesitate to~는 주저말고 ~해주세요 라는 의미로 메일에서 자주 쓰이는 표현`
+  - *inform* v.통지하다 `inform동사는 inform 사람 of~이나 inform 사람 that~ 형태로 사용된다`
+  - *instruction* n.지시
+  - *learn* v.알다 `배우다, 학습하다 외`
+  - *love* v.꼭 하고 싶다 `would love to는 would like to와 같은 의미이지만 더 강한 느낌이다`
+  - *regarding* prep.~에 대해 
+  - *reminder* n.주의 `이미 통지했지만 상기시키기remind위해 주의를 환기한다는 의미`
+  - *via* prep.~(연결수단)을 통해 
+  - *follow up* 추적(해서 확인)하다;후속 조치를 취하다 `이미 알고 있지만 재확인하는 경우에 쓴다`
+  - *get back to* ~후에 연락하다
+  - *in advance* 미리;먼저 `무엇인가 의뢰를 할 경우 미리 감사의 말을 전할 때 Thanks in advance나 Thank you in advance로 표현할 때가 많다`
+  - *look forward to* ~를 기대한다 
+  - *more about* ~에 대해 더
+  - *reach out to* ~에 연락하다 `특히 담당자나 관계자에게 연락을 하는 경우 사용된다`
 <hr>
 
 - Review
-
+  - *crap* n.형편없는 것;최악;쓰레기 `최악의 평가를 내릴 때 잘 쓰는 표현. crappy(쓰레기같은,최악의)` 
+  - *even* ad.~조차;마저 `형용사일 때는 평평한, 짝수의 의미도 있다` 
+  - *glitch* n.결함;버그 `형용사형은 glitchy` 
+  - *must* n.필수적인 것 `조동사로 ~해야한다는 의미가 있지만 명사로도 쓰인다` 
+  - *rate* v.평가하다;매기다 `품질이 어느 정도 수준인지 평가할때 사용한다` 
+  - *suck* v.엉망이다 `자동사라는 점에 주의. 3인칭 단수 현재형으로 ~sucks 형태로 많이 쓰인다` 
+  - *way* ad.매우;~과하다 `부사나 형용사를 강조할 때 사용된다. 명사일 때는 도로, 방법 등의 의미가 있다` 
+  - *it would be better if* 만일 ~한다면 더 좋을텐데 
+  - *other than that* 그 이외에는 
+  - *so far so good* 지금까지는 좋은
 <hr>
 
 - News
