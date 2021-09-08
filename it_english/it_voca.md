@@ -144,6 +144,27 @@ it 어휘 정리
 <hr>
 
 - News
+  - *acquisition* n.매수;획득;기업 인수
+  - *billion* n.10억 `million 100만 billion 10억 trillion 1조`
+  - *competitor* n.경쟁기업;경쟁제품
+  - *decline* v.거부하다
+  - *earlier* ad.미리;이전에;일찍 `early의 비교급. earlier this year 올 초`
+  - *enterprise* n.기업
+  - *executive* n.경쟁자;임원;간부
+  - *feature* n.기능;특성;특징
+  - *former* a.이전의
+  - *founder* n.창업자 `co-founder 공동창업자 found 설립하다`
+  - *launch* v.발표하다;출시하다;시작하다
+  - *partner* v.조직하다 n.파트너;협력자 `partner with ~와 협력하다`
+  - *revenue* n.수익
+  - *source* n.출처;정보원
+  - *spokesperson* n.대변인;홍보담당자
+  - *statement* .설명;진술
+  - *vendor* n.공급업체;납품업자
+  - *in other words* 즉, 다시 말해
+  - *millions of* 수백만의, 아주 많은
+  - *so far* 현재까지, 지금까지
+  - *work on* ~을 작업하다, ~에 대해 알고있다
 
 <hr>
 
