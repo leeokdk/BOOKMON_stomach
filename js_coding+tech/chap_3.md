@@ -144,4 +144,36 @@ function getUniqueColorsReduce(dogs) {
 - **삼항 연산자는 코드를 `단순화`할 수 있어서 사용할만한 가치가 있는 경우에만 쓰자.**
 
 ### Tip 19. 단락 평가를 이용해 효율성을 극대화하라.
+- 단락 평가short circuiting
+  > 가장 타당한 정보를 먼저 위치시켜서 정보 확인을 건너 뛰는 것
+  - 데이터가 항상 유효한 경우, 굳이 여러번 재확인할 필요가 없다.
+  - 참/거짓을 따지는 경우는 확인한 값을 곧바로 할당하면 불필요한 작업을 거치지 않을 수 있다.
+    - 참 값이면 무조건 통과 시켜주는 || 연산자를 활용 
+       ```js
+       const name = 'joe' || 'I have no name';
+       name;
+       ```
+  삼항연산자를 더 간결하게!
+     ```js
+     const icon = {path : 'image.jpg'}
+     function getIconPath(icon){
+     const path = icon.path || 'uploads/default.png';
+     return `http://assets.foo.com/${path}`;
+     }
+    ```
+  - 장점
+    - 표현식의 끝에 기본값을 추가할 수 있다 == 변수가 거짓 값이 되지 않는다
+- 특정 컬렉션의 메서드 또는 동작을 사용할 때 단락 평가를 사용하면 오류를 방지할 수 있다.
+  - 내용이 없는 경우
+    ```js
+    const userConfig1 = {} //지정된 배열이 없음
+    const userConfig2 = {images : [] } //내용이 없음
+    ```
+    - 거짓값이 발생하는 즉시 종료하는 && 연산자를 활용
+    ```js
+    function getImage(userconfig){
+      const images = userConfig.images; //내용, 속성이 없으면 undefined == 거짓 값
+      return images && images.length ? images[0] : 'default.png';
+    }
+    ```
 
