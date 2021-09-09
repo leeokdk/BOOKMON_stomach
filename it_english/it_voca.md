@@ -169,6 +169,23 @@ it 어휘 정리
 <hr>
 
 - Blog
+  - *above* a.위쪽에;위의 `앞에서 설명한 소스코드나 차트를 가리킬 때 사용`
+  - *below* ad.아래에;아래의 `바로 뒤에 예시를 열거할 때 자주 사용된다. 영문에서는 예문처럼 콜론을 함께 쓰기도.`
+  - *conclusion* n.결론
+  - *content* n.내용 `어떤 것 안에 들어 있는 정보(데이터)를 의미할 때도 있고 영상이나 일러스트와 같은 디지털 콘텐츠를 의미할 때도 있다`
+  - *crucial* a.결정적인;매우 중요한
+  - *come with* 장착되다;탑재되다
+  - *execute* v.실행하다
+  - *figure* n.그림;숫자(수치);형태
+  - *following* a.다음의;이하의 `below와 마찬가지로 바로 직후에 예시를 기술할 때 자주 사용된다. 콜론을 붙여쓰기도.`
+  - *mean* v.의미하다 `This means that ~ , That means ~ 와 같은 구문은 바로 앞의 문장에서 언급한 내용을 부연 설명할 때 자주 사용된다`
+  - *query* n.쿼리;질의
+  - *repository* n.리포지토리;저장소 `일반 영어에서는 보관소, 창고라는 의미`
+  - *straightforward* a.손쉬운;간단한 
+  - *summary* n.요약 정리 `in summary 요약하면, 요컨대`
+  - *typically* ad.일반적으로;전형적으로
+  - *let's* ~합시다 `Let's say ~ 라고 합시다`
+  - *make sure that* ~인지 확인하다 `ensure that, see if 도 같은 표현`
 
 <hr>
 
