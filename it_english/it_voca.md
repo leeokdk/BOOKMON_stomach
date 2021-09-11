@@ -190,6 +190,33 @@ it 어휘 정리
 <hr>
 
 - Manual
+  - *adjust* v.조정하다;조절하다
+  - *administration* n.관리
+  - *attach* v.첨부하다;붙이다 `메일에 파일을 첨부할 때 attach를 사용. 반대말은 detach(떼어내다)`
+  - *browse* v.둘러보다;찾다
+  - *determine* v.판정하다;결정하다
+  - *expand* v.확장하다;넓히다 `표시 내용을 확장한다는 의미로 쓰일 때의 반대말은 collapse(닫다 접다)`
+  - *issue* n.문제점;이슈 v.(출판물 등을)발행하다
+  - *manually* ad.수동으로 `automatically(자동으로)`
+  - *navigate* v.이동하다 `navigate to 장소 형태로 자주 사용된다`
+  - *orientation* n.방향 
+  - *overview* n.개요
+  - *prevent* v.방지하다 `prevent ... from ~ing 형태로 '...가 ~하는 것을 방지하다'라는 의미`
+  - *procedure* n.과정;절차
+  - *prompt* v.촉구하다
+  - *refer* v.참조하다;참고하다 `보통은 refer to 형태로 사용한다`
+  - *related* a.관련된
+  - *safety* n.안전
+  - *search* v.검색하다 n.검색 `search 장소 for 검색대상`
+  - *separate* a.별도의 v.분리하다
+  - *synchronize* v.동기화하다 `sync같은 약어로 사용한다`
+  - *troubleshooting* n.문제해결 
+  - *upper-left* a.왼쪽 위의 `upper-right 오른쪽 위의 lower-left 왼쪽 아래의 lower-rigt 오른쪽 아래의`
+  - *where* ad.거기에서 `수식이나 명령어 등의 바로 뒤에 붙여 써서 앞에서 언급한 기호나 표기를 설명할 때 사용되는 표현`
+  - *~ allows you to ...* ~으로 ...할 수 있다 `소프트웨어, 하드웨어, 기능 등 무생물이 주어가 된다. ~ enables you to ... 와 같은 의미.`
+  - *depending on* ~에 따라
+  - *one of the following* 다음 중 하나
+  - *press and hold* 누른 상태를 유지하다 `click and hold, tap and hold 도 사용된다`
 
 <hr>
 
