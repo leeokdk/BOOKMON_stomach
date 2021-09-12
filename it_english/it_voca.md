@@ -58,7 +58,6 @@ it 어휘 정리
   - *prefix* n.접두어 `suffix(접미어)`
   - *specify* v.지정하다
   - *summary* n.개요;요약 `detail(세부 설명)`
-  - *valid* a.유효한 `invalid(무효한)`
   - *determine if* ~인지 아닌지 판별하다 `determine은 결심하다 결정하다는 의미이지만 if나 whether와 함께 쓰일 경우 판정하다는 뜻으로 쓰인다.`
   - *See also* 여기도 참고 `다른 메소드 등을 참고할 필요가 있을 때 빈번하게 사용된다.`
   - *the number of* ~의 수 `a number of(많은)`
@@ -221,7 +220,54 @@ it 어휘 정리
 <hr>
 
 - Specify
+  - *allow* v.허가하다;가능하게 하다 `allow ~ to ... ~가 ...할 수 있게 하다`
+  - *appendix* n.부록
+  - *appropriate* a.적절한
+  - *associate* n.연관짓다
+  - *consideration* n.고려사항 `고려사항이 여러 가지일 경우에는 복수형을 쓴다`
+  - *constraint* n.제약;제약조건 `limitation 제한`
+  - *external* a.외부의 `internal 내부의`
+  - *functionality* n.기능 `function, capability, feature 또한 기능이란 뜻을 내포`
+  - *identify* v.특정하다;식별하다
+  - *implementation* n.구현;구축
+  - *indicate* v.명시하다;시사하다;의미하다
+  - *intend* v.의도하다;~하려고 생각하다 `be intended for ~ ~용이다. ~을 대상으로 한다.`
+  - *operation* n.작동;작업;운영;연산
+  - *particular* a.특정한 `특정한 하나라는 의미를 강조하기 위해 사용한다`
+  - *protocol* n.프로토콜;통신규약 `일반적으로는 외교 의례 또는 조약이라는 의미로 관계자들 사이에서 결정된다는 뜻으로 쓰인다`
+  - *provide* v.제공하다 `(기능을)갖추다 라는 의미로도 사용`
+  - *reference* n.참고문헌;참고 v.참고하다 
+  - *section* n.섹션;절
+  - *single* a.단일의 `하나라는 것을 강조하기 위해 관사 a에 더해 single을 붙일 때가 있다`
+  - *specific* a.특정의;구체적인
+  - *specification* n.사양;사양서 `spec로 줄여 사용될 때도 있다`
+  - *specify* v.명기하다;지정하다
+  - *as described in* ~에 설명된 것처럼 `as defined in ~ ~에 정의된 것처럼`
+  - *if any* 만약 있다면 `삽입구 또는 괄호와 함께 이용될 때가 많다`
+  - *note that* ~인 점에 주의
+  - *prior to* ~보다 앞에
 
 <hr>
 
 - QnA
+  - *alternatively* ad.대신에 `alternative 대안`
+  - *appreciate* v.감사하다 `~ would be appreciated 감사를 표시할 때 쓰는 전형적인 문구` 
+  - *conversion* n.변환 `convert 변환하다`
+  - *deploy* v.배포하다;배치하다 `deployment 배포`
+  - *e.g.* 예를 들면 `i.e. 즉`
+  - *given* ad.~을 가정하면;~을 생각해보면 `명사 앞에서 전치사로 쓰이는 표현이며 given that 형태로도 사용한다`
+  - *parenthesis* n.괄호 `괄호의 한 쪽을 가리키며 한 쌍은 복수형으로 parentheses라고 쓴다. 대괄호는 bracket`
+  - *performance* b.성능
+  - *placeholder* n.플레이스홀더;자리표시자 `장소를 확보하기 위해 임시로 놓아 두는 것`
+  - *quote* v.인용하다
+  - *scope* n.범위 `프로그래밍에서 scope는 어떤 변수나 함수가 유효한 범위를 의미한다`
+  - *storage* n.저장장치 `동사형은 store`
+  - *suppose* v.가정하다 `문장의 처음에 명령형 형태로 사용된다. 그 밖에 생각하다라는 의미도 있다`
+  - *variable* n.변수 `형용사일 때는 변경하기 쉬운 이나 변경 가능한 이라는 의미로도 쓰인다`
+  - *way* n.방법 `도로 길 이라는 의미도 있다. 매우 라는 의미의 부사로도 쓰인다`
+  - *as of* ~시점에;~부로
+  - *how come* 어떻게;왜 `why와 같은 의미이지만 조금 더 회화체에 가깝다`
+  - *in a nutshell* 요컨대;결국;간단히 말하자면
+  - *same here* 나도 마찬가지다
+  - *vice versa* 그 반대도 마찬가지다 `문장의 끝에 써서 문장의 처음에 말한 것과 반대 상황도 마찬가지라는 것을 표현할 때 사용`
+  - *work on* ~에 관해 일하다;열중하다 
