@@ -212,3 +212,107 @@ function setRegion({ location, ...details }){ //location 이외의 모든 것을
 
 ### Tip 31. 나머지 매개변수로 여러 개의 인수를 변수로 전달하라
 
+> ☝ 가정1. 사용자가 사진에 태그를 입력할 수 있게 하되 태그의 길이를 일정한 수준으로 제한하고자 함.
+
+```javascript
+//간단한 유효성 검사 함수
+function validateCharacterCount(max, items){
+	return items.every(iem => item.length < max); 
+}
+validateCharacterCount(10, ['Hobbs', 'Eagles']);
+//true
+```
+<details>
+<summary>➕ every() 배열메서드</summary>
+<div markdown="1">       
+	.filter()와 마찬가지로 참 또는 거짓인 값을 반환하는 콜백 함수를 인수로 전달한다. <br>
+	모든 항목을 대상으로 콜백 함수를 실행해 모든 항목에서 참 값이 반환되면 결과적으로 true를 반환한다.
+</div>
+</details>
+
+해당 함수를 실행할 때 두번째 매개변수인 items를 무조건 배열로 전달해야 정상적으로 출력이 된다. 이전에는 자바스크립트에 내장된 arguments 객체를 이용해 문제를 해결했다.
+<details>
+<summary>➕ arguments</summary>
+<div markdown="1">       
+	함수에 전달된 모든 인수를 담은 배열과 유사한 컬렉션
+</div>
+</details>
+
+하지만 아쉽게도 arguments는 객체이므로 Array 객체에 정적으로 메서드를 호출해서 배열로 변환해야 한다.
+```javascript
+//이전의 해결방법
+function getArguments(){
+	return arguments;
+};
+getArguments('Bloomsday', 'June 16');
+//{ '0': 'Bloomsday', '1': 'June 16' }
+function validateCharacterCount(max){
+	const items = Array.prototype.slice.call(arguments, 1)
+	return items.every(iem => item.length < max); 
+};
+```
+
+하지만 이제 인수가 배열인 경우가 달라진다. 
+
+인수를 배열로 전환하기 때문에 배열 그대로가 아닌 인수 목록으로 변환해서 전달해야한다.
+
+```javascript
+// 펼침 연산자를 사용
+validateCharacterCount(10, 'wvoguie');
+validateCharacterCount(10, ...tags);
+```
+
+위의 방법은 arguments 객체를 다루는 문법이 난해하기 때문에 사용하기 어렵다.
+
+⚠ 해당 코드를 보는 다른 개발자가 arguments 객체에 대해 모를 경우 함수 매개변수로 인수 목록을 받는다는 사실조차 알기 어려울 수 있다. 그로 인해 함수의 가독성이 저하되고 함수를 파악하는데 시간이 걸리게 된다. 지양해야할 점!
+
+이 문제를 해결하기 위해 나머지 매개변수를 사용할 수 있다.
+
+나머지 매개변수를 이용하면 인수 목록을 전달해 변수에 담을 수 있다!
+
+```javascript
+function getArguments(...arg){ //나머지 매개변수로 전달하고 할당할 변수 이름 작성
+	return args; //이후 전달되는 매개벼눗는 이 변수에 배열로 담긴다.
+};
+getArguments('Bloomsday', 'June 16');
+// ['Bloomsday', 'June 16']
+
+//굳이 getArguments 함수를 사용하지 않고 나머지 매개변수를 활용하여 함수 작성
+function validateCharacterCount(max, ...items){
+	return items.every(iem => item.length < max); 
+};
+```
+
+나머지 매개변수를 활용하여 코드 작성이 간단해졌으며 예측가능성이 높아졌다. 또한 기존에 작성했던 함수와 동일한 방법으로 인수 목록을 전달하거나 배열을 펼쳐 넣어 함수를 호출할 수 있다. 그러므로 arguments 객체를 사용했던 **이전의 코드와 전혀 차이가 없다.**
+
+- 그외에도 나머지 매개변수를 사용하는 이유!
+1. 인수를 배열로 다루는 것을 다른 개발자들에게 알려야 하는 경우 적합하다.
+2. 나머지 매개변수는 코드 디버깅에 좋은 방법이 될 수 있다.
+3. 나머지 인수는 함수 간에 속성을 전달하면서 해당 속성을 조작할 필요가 없을 때 사용하면 좋다. 
+	> 상황: 변경 사항을 저장할 때 다른 함수로 정보를 갱신하면서 동시에 창을 닫아야 하는 경우
+	```javascript
+	function applyChanges(...args){
+		updateAccount(...args);
+		closeModat();
+	}
+	```
+
+‼ 주의할점. 나머지 매개변수가 매개변수만을 위한 것은 아니다!
+
+=> 객체의 키-값 쌍이나 배열에 담긴 나머지 값을 가져올 때도 사용 가능.
+
+펼침 연산자와 마찬가지로 부수 효과를 제거하면서 일반적인 배열 메서드를 다시 만들 수 있다.
+
+```javascript
+const queue = ['stop', 'collaborate', 'listen'];
+const [first, ...remaining] = queue;
+first; //'stop'
+remaining; //['collaborate', 'listen']
+//원본배열 그대로 유지
+```
+
+> But 나머지 매개변수를 사용할 경우 언제나 **마지막 인수**에 사용해야 한다.
+> 반드시 함수의 마지막 매개변수여야 하며 해체 할당의 경우에도 마지막 값이어야 한다.
+> 그러므로 위의 함수를 역전한 마지막 인수를 반환하는 메서드는 나머지 매개변수로 불가능하다.
+
+ 하지만 여전히 유용하게 사용할 수 있는 기술이다. ❤
