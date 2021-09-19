@@ -164,5 +164,51 @@ function displayPhoto({
 
 ### Tip 30. 키-값 할당을 단순화하라
 
+<details>
+<summary>해체할당 개념 다시 잡기</summary>
+<div markdown="1">       
+
+구조분해 할당`destructuring assignment` 이라고도 한다. 말 그대로 내용물을 해체하여 할당하는 것. <br>
+해체할 내용물이 있는 배열과 객체에 사용되는 개념.
+
+</div>
+</details>
+
+- 변수와 이름이 같은 키를 갖는 키-값 쌍을 객체에 추가하려면 **변수 이름**만 적으면 된다.
+```javascript
+const landscape = {
+	title:'Landscap',
+	photographer: 'Nathan',
+	location: [32.712, -103.140],
+};
+const region = {
+	city: 'Hobbs',
+	country: 'Lea',
+	state: {
+		name: 'New Mexico',
+		abbreviation: 'NM',
+	},
+};
+function getCityAndState({ location }){
+	const { city, state } = determinCityAndState(location); //위경도 좌표를 이용해서 지역정보를 조회할 수 있는 헬퍼 함수 존재를 가정.
+	return {
+		city,
+		state: state.obbreviation, //기존방식 혼용가능
+	};
+};
+// city: 'Hobbs', state: 'NM'
+```
+- 객체 펼침 연산자와 일반적인 키-값 할당을 함께 사용해서 한 가지 정보를 제거하고 **나머지는 그대로 유지**할 수 있다.
+```javascript
+function setRegion({ location, ...details }){ //location 이외의 모든 것을 변수 details에 할당
+	const { city, state } = determineCiAndState(location);
+	return {
+		city,
+		state: state.abbreviation,
+		...details, 
+	};
+};
+```
 
 ### Tip 31. 나머지 매개변수로 여러 개의 인수를 변수로 전달하라
+
