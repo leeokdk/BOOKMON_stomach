@@ -146,7 +146,129 @@ getUserPreferences()
 
 
 ### Tip 44. async/await로 함수를 명료하게 생성하라
+프라미스는 콜백함수에 비해 훌륭한 방법이긴 하나 여전히 메서드에서 콜백을 다루고 있다. 
+이를 보완하고자 **비동기 프라미스 데이터를 단일 함수의 변수에 추가**해서 콜백 사용을 완전하게 피할 수 있는 방법이 생겼다.
+
+- async / await 는 훌륭한 짝이지만 서로 분리된 동작이다!
+  - async : 비동기 데이터를 사용한다는 의미
+  - await : 값이 반환될 때까지 함수의 실행을 중지
+> ☝️ 주의할 점.<br>
+> async / await 는 더 나은 방법으로 프라미스를 보완하는 것이지 대체하는 것이 아니다.<br>
+> 대부분의 최신 브라우저는 지원하지만 아닐 수도 있으니 확인할 것.
+```javascript
+/* 일반 프라미스 사용할 때
+  // getUserPreferences() 함수의 then() 메서드에 함수를 넘기는 코드
+  getUserPreferences()
+  .then(preferences => {
+    console.log(preferences.theme);
+  });
+*/
+
+//async로 비동기임을 알려줌
+async function getTheme(){
+  //await로 프라미스를 반환한다는 것을 알려줌
+  const { theme } = await getUserPreferences(); //dusk
+  //const theme = await getUserPreferences();  //{theme: "dusk", ring: "me"}
+  //해체할당으로 하는 이유
+  return theme;
+}
+
+//비동기 함수는 프라미스로 변환된다. getTheme()을 호출해도 then()사용가능
+getTheme().then(theme => {
+  console.log(theme);
+});
+```
+
+#### 💡 _사실 async 함수가 정말 빛나는 때는 여러 개의 프라미스를 다룰 때다._
+```javascript
+// 연결된 프라미스를 하나의 함수로 감싸진 여러 개의 함수 호출로 변환
+async function getArtistByPreference(){
+  const { theme } = await getUserPreferences();
+  const { album } = await getMusic();
+  const { artist } = await getArtist(); //awiat를 빼면 undefined를 반환.
+  return artist;
+}
+
+getArtistByPreference()
+  .then(artist => {
+    console.log(artist);
+  })
+  .catch(e => { //오류처리용 catch
+    console.log(e);
+  });
+```
+프라미스의 용도 => 주로 API를 사용할 때!
+
+> ❓ 비동기 언어로 이전 코드가 완료되지 않아도 코드가 진행될 수 있도록 해놨는데
+> await로 값이 반환될 때까지 기다리면 비동기 언어를 쓰지 않을 때랑 무슨 차이가 있는지?
 
 ### Tip 45. fetch로 간단한 AJAX 호출을 처리하라
+ 
+<small>
+🧐 단일 페이지 웹앱은 자바스크립트가 인기를 끄는 이유 중 하나이지만, AJAX(비동기 자바스크립트와 XML)로 데이터를 가져오는 작업은
+번거로운 과정이었다. 이 복잡도를 낮추기 위해 jQuery같은 라이브러리를 사용했다.
+</small>
 
+하지만 AJAX 호출을 처리할 수 있는 fetch()가 등장!
+<details>
+<summary>주의: fetch()는 자바스크립트 명세의 일부가 아니다</summary>
+<div markdown="1">       
+
+fetch()는 대부분의 최신 브라우저에서 지원되지만 Node.js에서는 기본적으로 지원되지 않는다.
+Node.js에서 fetch()를 사용하려면 node-fetch 패키지를 사용해야 한다.
+
+</div>
+</details>
+
+[가상의 블로그 데이터로 연습하자](https://jsonplaceholder.typicode.com/)
+
+[typicode에서 제공하는 JSON 서버로 로컬 환경에서 모의 API도 만들 수 있다](https://my-json-server.typicode.com/)
+
+```javascript
+//데이터를 가져오는 get 요청, 응답을 처리하는 프라미스 반환
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(data => {
+    // catch() 블록으로는 요청이 실패하는 경우를 잡을 수 없음
+    // ok 필드는 응답 코드가 200 ~ 299 사이인 경우 true 반환
+    if(!data.ok){
+      throw Error(data.status);
+    }
+    return data.json(); //json() 호출로 JSON으로 변환
+    //json 메서드도 프라미스 반환
+  })
+  .then(post => {
+    console.log(post.title); //파싱된 데이터 처리
+  })
+  .catch(e => {
+    console.log(e);
+  });
+
+//데이터를 등록하는 post 요청
+const update = {
+  title: 'Clarence White Techniques',
+  body: 'amazing',
+  userId: 1,
+};
+
+const options = {
+  method: 'post', //post 메서드 사용 선언
+  headers: { //JSON 데이터를 보내기 위한 헤더의 설정
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(update),
+};
+
+//추가 설정을 위한 options 추가
+fetch('https://jsonplaceholder.typicode.com/posts/',options).then(data => {
+  if(!data.ok){
+    throw Error(data.status);
+  }
+  return data.json(); 
+}).then(update => {
+    console.log(update); 
+}).catch(e => {
+  console.log(e);
+});
+
+```
 ### Tip 46. localStorage로 상태를 장기간 유지하라
