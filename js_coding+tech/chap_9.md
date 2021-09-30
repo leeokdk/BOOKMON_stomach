@@ -272,3 +272,70 @@ fetch('https://jsonplaceholder.typicode.com/posts/',options).then(data => {
 
 ```
 ### Tip 46. localStorage로 상태를 장기간 유지하라
+
+사용자가 페이지를 떠나거나 새로고침하면 데이터가 갱신되고 다시 작성해야하는 번거로움이 생긴다.<br>
+이 때 유용하게 사용할 수 있는 localStorage.
+
+> 장점! 데이터를 브라우저에 저장하여 사용자의 번거로움을 줄이고 정보를 가져오는 수고를 줄이자!<br>
+> 단점. 여러 기기에서 데이터를 공유/유지할 수 없다. 보안과 직결되는 정보는 로컬스토리지에 저장하면 위험.
+
+<small>
+기능의 목표: <br>
+선호하는 견종을 브라우저에 저장하여 조건을 초기화(페이지 갱신 등)할 때 불러올 수 있다.
+</small>
+
+- localStorage 기본
+```javascript
+function saveBreed(breed){
+	localStorage.setItem('breed', breed); //map의 형태
+}
+
+function getBreed(){
+	return localStorage.getItem('breed'); 
+}
+
+function removeBreed(breed){
+	localStorage.removeItem('breed'); 
+}
+
+// 저장한 데이터 모두 지우기
+function clearPreferences(){
+	localStorage.clear();
+}
+```
+
+- localStorage 에 정보가 있으면 추가
+```javascript
+function applyBreedPreference(filters){ 
+  const breed = getSavedBreed();
+  if (breed) {
+    filters.set('breed',breed);
+  }
+  return filters;
+}
+```
+
+- localStorage 를 사용할 경우 반드시 `문자열`(배열, 객체 X)이어야 한다.
+```javascript
+// 데이터를 localStorage에 저장할 때
+// 데이터를 문자열로 변환
+function savePreferences(filters){
+	const filterString = JSON.stringfy([...filters]); 
+				// 조건을 처리할 때 맵을 사용했기 때문에 먼저 배열에 펼쳐 넣어야 한다.
+	localStorage.setItem('preference', filterString);
+}
+
+// 저장한 데이터를 다시 사용하기 위해 불러올 때
+// 데이터를 맵으로 변환
+function retrievePreferences(){
+	const preferences = JSON.parse(localStorage.getItem('preferences')); 
+	return new Map(preferences);
+}
+```
+
+- sessionStorage의 경우 서버 측 렌더링과 클라이언트 측 기능이 혼합되어 있는 경우 유용하다.<br>
+<small>
+ex) 새로 고침하면 저장한 데이터 유지, 페이지를 떠났다고 돌아오면 저장한 데이터가 없는 기본 상태
+</small>
+
+> ❓ 세션 스토리지와 세션은 같은 것인가?
