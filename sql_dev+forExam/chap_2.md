@@ -3,6 +3,9 @@
 ### 1. SQL 기본
 
 #### SQL 문장들의 종류
+
+<img src="https://i.imgur.com/gafegFT.jpg">
+
 - 데이터 조작어DML: select, insert, delete, update
 - 데이터 정의어DDL: create, alter, drop, rename
 - 데이터 제어어DCL: grant, revoke
@@ -49,6 +52,9 @@
     - No Action: 참조무결성을 위반하는 입력 액션을 취하지 않음
 
 #### 테이블 삭제 명령어
+
+<img src="https://i.imgur.com/sve34O3.jpg">
+
 - DELETE TABLE: 테이블의 데이터만 삭제한다.
 - TRUNCATE TABLE: 테이블 자체가 삭제되는 것이 아니고, 해당 테이블에들어있던 모든 행들이 제거되고 저장 공간을 재사용 가능하도록 해제한다.
 - DROP TABLE: 테이블 구조(스키마)를 완전히 삭제한다.
@@ -94,6 +100,60 @@ ROLLBACK TRANSACTION SVTR1;
     - 그룹 함수
     - 윈도우 함수
 - 사용자 정의 함수
+
+<img src="https://i.imgur.com/IiCubM2.jpg">
+<img src="https://i.imgur.com/1tlIhXh.jpg">
+
+#### DUAL 테이블의 특성
+- 사용자 SYS가 소유하며 모든 사용자가 엑세스 가능한 테이블이다.
+- 'SELECT ~ FROM ~'의 형식을 갖추기 위한 일종의 DUMMY 테이블이다.
+- DUMMY라는 문자열 유형의 칼럼에 'X'라는 값이 들어 있는 행을 1건 포함하고 있다.
+
+#### NULL의 특성
+- 널 값은 아직 정의되지 않은 값으로 0 또는 공백과 다르다. 0은 숫자이고, 공백은 하나의 문자이다.
+- 테이블을 생성할 때 NOT NULL 또는 PRIMARY KEY로 정의되지 않은 모든 데이터 유형은 널 값을 포함할 수 있다.
+- 널 값을 포함하는 연산의 경우 결과 값도 널 값이다. 모르는 데이터에 숫자를 더하거나 빼도 결과는 마찬가지로 모르는 데이터인 것과 같다.
+- 결과값을 NULL이 아닌 다른 값을 얻고자 할 때 NVL/ISNULL 함수를 사용한다. NULL 값의 대상이 숫자 유형 데이터인 경우는 주로 0으로, 문자 유형 데이터인 경우는 블랭크보다는 'x' 같이 해당 시스템에서 의미 없는 문자로 바꾸는 경우가 많다.
+
+<img src="https://i.imgur.com/Jjv2ms0.jpg">
+
+#### 0과 null의 연산
+- null이 포함된 연산은 모두 null이다. (집계함수는 예외)
+- 분모가 0일 경우 연산 자체가 에러를 발생한다.(분자일 경우 0)
+
+<img src="https://i.imgur.com/mDRN6wF.jpg">
+
+#### group by 절과 having 절의 특성
+- group by 절을 통해 소그룹별 기준을 정한 후, select 절에 집계 함수를 사용한다.
+- 집계함수의 통계 정보는 null 값을 가진 행을 제외하고 수행한다.
+- group by 절에서는 select 절과는 달리 alias 명을 사용할 수 없다.
+- 집계 함수는 where 절에는 올 수 없다. (집계 함수를 사용할 수 있는 group by 절보다 where 절이 먼저 수행된다)
+- where 절은 전체 데이터를 group 으로 나누기 전에 행들을 미리 제거시킨다.
+- having 절은 group vy 절의 기준 항목이나 소그룹의 집계 함수를 이용한 조건을 표시할 수 있다.
+- group by 절에 의한 소그룹별로 만들어진 집계 데이터 중, having 절에서 제한 조건을 두어 조건을 만족하는 내용만 출력한다.
+- having 절은 일반적으로 group by 절 뒤에 위치한다.
+
+#### order by 절 특징
+- 기본적인 정렬 순서는 오름차순(asc)이다.
+- 숫자형 데이터 타입은 오름차순으로 정렬했을 경우에 가장 작은 값부터 출력된다.
+- 날짜형 데이터 타입은 오름차순으로 정렬했을 경우 날짜 값이 가장 빠른 값이 먼저 출력된다.
+- Oracle에서는 Null 값을 가장 큰 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 마지막에, 내림차순으로 정렬했을 경우에는 가장 먼저 위치한다.
+- 반면 SQL Server에서는 Null 값을 가장 작은 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 먼저, 내림차순으로 정렬했을 경우에는 가장 마지막에 위치한다.
+
+#### select 문장 실행순서
+> from => where => group by => having => select => order by
+
+#### 기타
+- 에제: 상위 3개 출력 단 같은 값일 경우 함께 출력
+```sql
+select top(2) with ties ename, sal
+from emp
+order by sal desc;
+```
+
+- 두 개 이상의 테이블 들을 연결 또는 결합하여 데이터를 출력하는 것을 join 이라고 하며,
+일반적인 경우 행들은 primary key(pk)나 foreign key(fk) 값의 연관에 의해 join이 성립된다.
+하지만 어떤 경우에는 이러한 pk, fk 의 관계가 없어도 논리적인 값들의 연관만으로 join이 성립 가능하다.
 
 ### 2. SQL 활용
 
