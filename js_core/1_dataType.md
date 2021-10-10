@@ -204,3 +204,89 @@ obj2 = {c: 20, d:'ddd'}; //{c: 20, d:'ddd'}를 새로운 데이터 영역(@5006)
 
 위처럼 완전히 같은 상태에서 비교하면 새로운 객체로써 인식하게 되고
 obj2 또한 obj1과 주솟값이 달라지게 된다.
+
+## 05. 불변 객체
+
+### 1-5-1 불변 객체를 만드는 간단한 방법
+- 값으로 전달받은 객체에 변경을 가하더라도 원본 객체는 변하지 않아야 하는 경우 불변 객체가 필요하다.
+
+```javascript
+var user = {
+    name: 'Jaenam',
+    gender: 'male',
+};
+
+//////////////////////////변경하기 전 코드
+var changeName = function (user, newName){
+    var newUser = user;
+    newUser.name = newName;
+    return newUser;
+};
+
+var user2 = changeName(user, 'Jung');
+
+if(user !== user2){ //원본도 함께 변경되어 같으므로 출력안됨
+    console.log('유저 정보가 변경되었습니다.');
+}    
+console.log(user.name, user2.name); // Jung Jung
+console.log(user === user2); // true
+
+//////////////////////////변경한 후 코드
+var changeName = function (user, newName){
+    return { //새로운 객체를 반환하도록 수정
+        name: newName,
+        gender: user.gender
+    };
+};
+
+var user2 = changeName(user, 'Jung');
+
+if(user !== user2){ 
+    console.log('유저 정보가 변경되었습니다.'); //유저 정보가 변경되었습니다.
+}    
+console.log(user.name, user2.name); // Jaenam Jung
+console.log(user === user2); // false
+ ```
+
+- 변경할 필요가 없는 기존 객체의 프로퍼티(gender)가 하드코딩으로 입력되므로 대상 객체의 프로퍼티의 개수에 상관없이 모든 프로퍼티를 복사하는 함수를 만든다.
+
+```javascript
+var copyObject = function(target){
+    var result = {}
+    for(var prop intarget){
+        result[prop] = target[prop];
+    }
+    return result;
+};
+```
+
+### 1-5-2 얕은 복사와 깊은 복사
+
+## 06. undefined 와 null
+
+## 07. 정리
+
+- 자바스크립트 데이터 타입
+  - 기본형: 불변값
+  - 참조형: 가변값
+
+
+- `변수`: 변경 가능한 데이터가 담길 수 있는 공간
+- `식별자`: 그 변수의 이름
+
+
+- 기본형 데이터 할당
+  1. 변수를 선언하면 컴퓨터는 우선 메모리의 빈 공간에 식별자를 저장하고, 그 공간에 자동으로 undefined를 할당한다.
+  2. 그 변수에 기본형 데이터를 할당하려고 하면 별도의 공간에 데이터를 저장하고, 그 공간의 주소를 변수의 값 영역에 할당한다.
+
+- 참조형 데이터 할당
+  1. 변수를 선언하고 undefined를 할당하는 것 까지는 동일.
+  2. 참조형 데이터 내부 프로퍼티들을 위한 변수 영역을 별도로 확보해서 확보된 주소를 변수에 연결하고, 다시 앞서 확보한 변수 영역에 각 프로퍼티의 식별자를 저장하고, 각 데이터를 별도의 공간에 저장해서 그 주소를 식별자와 매칭시킨다.
+  > 참조형 데이터는 여러 개의 프로퍼티(변수)를 모은 그룹이기 때문에 기본형과 다르다.(참조형이 가변값인 이유)
+
+- 깊은 복사를 통해 내부 프로퍼티들을 일일이 복사하거나 라이브러리를 이용하여 참조형 데이터를 불변값으로 사용할 수 있다.
+
+
+- `undefined`: 어떤 변수에 값이 존재하지 않을 경우
+- `null`: 사용자가 명시적으로 없음을 표현하기 위해 대입한 값
+> 사용자가 없음을 표현하기 위해 명시적으로 undefined를 대입하는 것을 지양할 것.
