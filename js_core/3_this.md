@@ -134,8 +134,8 @@ var obj = {
 	}
 };
 
-obj.methodA(); // { methodA: f, inner: {...} } (===obj)
-obj['methodA'](); // { methodA: f, inner: {...} } (===obj)
+obj.methodA(); // {inner: {…}, methodA: ƒ} (===obj)
+obj['methodA'](); // {inner: {…}, methodA: ƒ} (===obj)
 
 obj.inner.methodB(); // { methodB: f } (===obj.inner)
 obj.inner['methodB'](); // { methodB: f } (===obj.inner)
@@ -158,16 +158,16 @@ obj['inner']['methodB'](); // { methodB: f } (===obj.inner)
 ```javascript
 var obj1 = {
 	outer: function () {
-		console.log(this); 
+		console.log(this); // {outer: ƒ} (===obj1) 
 		var innerFunc = function () {
 			console.log(this);
 		}
-		innerFunc(); //Window. 함수로서 호출
+		innerFunc(); //Window {..} 함수로서 호출
 		
 		var obj2 = {
 			innerMethod: innerFunc
 		};
-		obj2.innerMethod(); //obj2. 메서드로서 호출
+		obj2.innerMethod(); //{innerMethod: ƒ} (===obj2) 메서드로서 호출
 	}
 };
 obj1.outer(); //obj1
@@ -190,7 +190,7 @@ var obj = {
 		
 		var self = this;
 		var innerFunc2 = function () {
-			console.log(self); //{ outer: f }
+			console.log(self); // { outer: f }
 		};
 		innerFunc2();
 	}
@@ -207,8 +207,9 @@ var obj = {
 	outer: function () {
 		console.log(this); // { outer: f }
 		var innerFunc = () => {
-			console.log(this); // { outer: f } 전역아님!
+			console.log(this); 
 		};
+		innerFunc(); // { outer: f } 전역아님!
 	}
 };
 obj.outer();
@@ -337,25 +338,237 @@ obj.mehtod.apply({a:4},[5,6]); // 4 5 6
 
 ### 3-2-3 call / apply 메서드의 활용
 
+- call / apply 메서드 
+  - 장점: 명시적으로 별도의 this를 바인딩하면서 함수 또는 메서드를 실행할 수 있다.
+  - 단점: this를 예측하기 어렵게 만들어 코드 해석을 방해한다.
+
 #### 유사배열객체array-like object에 배열 메서드를 적용
+> `유사배열객체`<br>
+> 숫자로 key를 갖고 있고 length를 프로퍼티로 갖고 있는 객체 <br>
+> ex: arguments 객체, Node 선택자로 선택한 결과인 NodeList 등
+
+- 배열과 구조가 유사하여 배열처럼 사용이 가능하다.
+- 하지만 Array의 인스턴스가 아니므로 관련 메서드는 사용할 수 없다.
+- 하지만! call/apply를 이용하면 사용할 수 있다!
+
+```javascript
+var obj = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3
+} //직접 만든 유사배열객체
+
+Array.prototype.push.call(obj, 'd'); 
+//배열 메서드를 사용하기 위한 Array.prototype
+//  배열 메서드 push('d'추가)
+//      call 메서드를 통해 obj에 적용
+// {0:'a',1:'b',2:'c',3:'d',length:4}
+
+var arr = Array.prototype.slice.call(obj);
+//배열 메서드를 사용하기 위한 Array.prototype
+//  배열 메서드 slice(얕은 복사를 통해 배열 반환. 객체를 배열로 바꾼것)
+//      call 메서드를 통해 obj에 적용
+// ['a','b','c','d']
+
+//arguments 객체
+function a () {
+    var argv = Array.prototype.slice.call(arguments); //유사배열객체 > 배열
+    argv.forEach(function (arg) {
+        console.log(arg);
+    });
+}
+a(1,2,3);
+
+//NodeList
+document.body.innerHTML = '<div>a</div><div>b</div><div>c</div>';
+var nodeList = document.querySelectorAll('div'); //유사배열객체
+var nodeArr = Array.prototype.slice.call(nodeList); //배열
+nodeArr.forEach(function (node) {
+    console.log(node);
+});
+```
+
+- 문자열도 index와 legnth 프로퍼티를 갖고 있기 때문에 위처럼 구사가 가능하다.
+- 하지만 length가 읽기 전용이기 때문에 원본의 변형 메서드(push, pop, shift, unshift, splice)등은 에러가 난다.
+- concat처럼 대상이 반드시 배열이어야하는 경우 에러는 나지 않지만 결과값이 이상해진다.
+
+- ES6에서는 유사배열객체, 순회 가능한 모든 종류의 데이터 타입을 배열로 전환하는 `Array.from` 메서드를 새로 도입하였다.
 
 #### 생성자 내부에서 다른 생성자를 호출
 
+- 공통된 내용의 생성자를 만들고 call/apply로 호출하여 사용 가능
+
+```javascript
+//공통 함수
+function Person(name, gender){
+    this.name = name;
+    this.gender = gender;
+}
+function Student(name, gender, school){
+    Person.call(this, name, gender); //call로 구현
+    this.school = school;
+}
+function Employee(name, gender, company){
+    Person.apply(this,[name,gender]); //apply로 구현
+    this.company = company;
+}
+//결과는 동일
+```
+
 #### 여러 인수를 묶어 하나의 배열로 전달하고 싶을때 - apply 활용
+
+> apply로 인수배열을 전달 및 배열 메서드 활용을 통해 더 쉽게 코드 구현
+
+```javascript
+var numbers = [10, 20, 3, 16, 40]; //인수배열
+//max min 구하기
+
+// (1)
+var max = min = numbers[0];
+numbers.forEach(function(number){
+    if(number > max){
+        max = number;
+    }
+    if(number < min){
+        min = number;
+    }
+});
+
+// (2) apply 이용
+var max = Math.max.apply(null, numbers);
+var min = Math.min.apply(null, numbers);
+
+// (3) ES6 펼치기 연산자 이용
+var max = Math.max(...numbers);
+var min = Math.min(...numbers);
+```
 
 <hr>
 
 ### 3-2-4 bind 메서드
 
+- ES5에서 추가된 기능
+- call과 비슷하지만 `즉시 호출하지는 않고` 넘겨받은 this 및 인수들을 바탕으로 `새로운 함수를 반환하기만 하는` 메서드
+- 사용하는 목적은 두 가지
+  - 함수에 this를 미리 지정하는 것
+  - 부분 적용 함수를 구현하는 것
+
+```javascript
+var func = function(a,b,c,d){
+    console.log(this,a,b,c,d);
+};
+func(1,2,3,4); // 여기서 this는 window
+
+var bindFunc1 = func.bind({x:1}); //this를 미리 지정
+bindFunc1(5,6,7,8); // 여기서 this는 지정값 {x:1}
+
+var bindFunc2 = func.bind({x:1},4,5); //부분 함수 구현
+bindFunc2(6,7); // 여기서 this와 a,b는 지정값 {x:1} 4 5
+bindFunc2(8,9); // 마찬가지 
+```
+
+#### name 프로퍼티
+
+- bind 메서드를 적용해 새로 만든 함수는 name 프로퍼티에 bound 접두어가 붙는다.
+- 코드 추적이 용이.
+
+```javascript
+...
+console.log(func.name); // func
+console.log(bindFunc.name); // bound func
+```
+
+#### 상위 컨텍스트의 this를 내부함수나 콜백 함수에 전달하기
+
+- 3-1-3에서 내부함수의 this를 사용할때 self를 이용한 우회법이 있었다.
+- call/apply 또는 bind 메서드를 이용하면 더 깔끔하다.
+```javascript
+var obj = {
+	outer: function () {
+		console.log(this); // { outer: f }
+		var innerFunc1 = function () {
+			console.log(this); 
+		}
+		innerFunc1(); // Window..
+		//call 방식
+		innerFunc1.call(this); // { outer: f }
+        //bind 방식
+        var innerFunc2 = function () {
+			console.log(this); 
+		}.bind(this);
+		innerFunc2(); // { outer: f }
+	}
+};
+obj.outer();
+```
+
+- bind 메서드를 사용하면 콜백함수 내에서의 this에 관여하는 함수와 메서드에 대해서 this 값을 바꿀 수 있다.
+
+```javascript
+var obj = {
+    logThis: function () {
+        console.log(this);
+    },
+    logThisLater1: function (){
+        setTimeout(this.logThis, 500);
+    },
+    logThisLater2: function (){
+        setTimeout(this.logThis.bind(this), 1000);
+    }
+};
+obj.logThisLater1(); // window ..
+obj.logThisLater2(); // {logThis:f ...}
+```
+
 <hr>
 
 ### 3-2-5 화살표 함수의 예외사항
+
+- ES6에서 도입된 화살표 함수는 실행 컨텍스트 생성 시 this를 바인딩하지 않는다.
+- 즉 화살표 함수 내부에는 this가 아예 없으며, 접근하고자 하면 스코프체인상 가장 가까운 this에 접근한다.
+- 우회하거나 메서드를 사용할 필요없이 아주 간편!
+
+```javascript
+var obj = {
+	outer: function () {
+		console.log(this); // obj { outer: f }
+		var innerFunc1 = () => {
+			console.log(this); 
+		}
+		innerFunc1(); // obj { outer: f }
+	}
+};
+obj.outer();
+```
 
 <hr>
 
 ### 3-2-6 별도의 인자로 this를 받는 경우(콜백 함수 내에서의 this)
 
+- 인자로 아예 this를 받아서 명시함.
+- 주로 배열 메서드에 많이 존재.
+```javascript
+var report = {
+    sum: 0,
+    count: 0,
+    add: function() { 
+        var args = Array.prototype.slice.call(arguments);
+        args.forEach(function (entry) {
+            this.sum += entry;
+            ++this.count;
+        }, this); // add의 this(report)를 바인딩해서 forEach에서 사용함
+    },
+    average: function () {
+        return this.sum / this.count;
+    }
+};
+```
 
+- 콜백 함수와 함께 thisArg를 인자로 받는 메서드
+  - Array.prototype: forEach, map, filter, some, every, find, findIndex, flatMap, from
+  - Set.prototype: forEach
+  - Map.prototype: forEach
 
 <hr>
 <hr>
