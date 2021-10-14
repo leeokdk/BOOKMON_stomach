@@ -18,9 +18,66 @@
 
 ### 4-2-1 호출 시점
 
+```javascript
+// 콜백함수 예제1-1 setInterval
+var count = 0;
+var timer = setInterval(function () {
+  consoel.log(count);
+  if(++count > 4) clearInterval(timer);
+}, 300);
+```
+- setInterval의 구조
+  - var intervalID = scope.setInterval(func, delay, 옵션 파라미터);
+  - intervalID : 고유한 ID 값. clearInterval시 사용.
+  - scope: Window 객체 또는 Worker의 인스턴스가 해당. window의 경우 생략가능.
+
+```javascript
+// 콜백함수 예제1-2 setInterval 콜백함수 분리
+var count = 0;
+var cbFunc = function () {
+  consoel.log(count);
+  if(++count > 4) clearInterval(timer);
+});
+var timer = setInterval(cbFunc, 300);
+```
+
+- cbFunc 함수가 콜백 함수.
+- 제어권을 넘겨받은 setInterval이 스스로의 판단에 따라 적절한 시점에 익명함수를 실행한다.
+
+> 콜백 함수의 제어권을 넘겨받은 코드는 `콜백함수 호출 시점에 대한 제어권`을 가진다.
+
 <hr>
 
 ### 4-2-2 인자
+
+```javascript
+// 콜백함수 예제2-1 map
+var newArr = [10, 20, 30].map(function (currentValue, index){
+  console.log(currentValue, index);
+  return currentValue + 5;
+});
+console.log(newArr); //[15,25,35]
+```
+
+- map의 구조
+  - Array.prototype.map(callback, [thisArg]) thisArg 생략시 전역객체 바인딩
+  - callback: function(현재값, 인덱스, map 메서드의 대상이 되는 배열 자체)
+
+```javascript
+// 콜백함수 예제2-2 map 인자의 순서를 임의로 바꾸기
+var newArr = [10, 20, 30].map(function (index, currentValue){
+  console.log(index, currentValue);
+  return currentValue + 5;
+});
+console.log(newArr); //[5,6,7]
+```
+
+- 이름은 사용자가 명명한 것일 뿐 아무 의미도 없다.
+- 첫번째, 두번째 순서에 의해서만 각각 구분하고 인식한다.
+- 메서드를 호출 해서 원하는 값을 얻으려면 정의된 규칙을 따라야 한다.
+- 콜백 함수를 호출하는 주체가 사용자가 아닌 map 메서드이므로 인자에 어떤 값으로, 어떤 순서로 넘길 것인지 전적으로 map 메서드에 달려있다.
+
+> 콜백 함수의 제어권을 넘겨받은 코드는 콜백 함수를 호출할 때 `인자에 어떤 값들을 어떤 순서로 넘길 것인지에 대한 제어권`을 가진다.
 
 <hr>
 
