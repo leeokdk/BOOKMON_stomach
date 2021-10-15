@@ -157,4 +157,38 @@ order by sal desc;
 
 ### 2. SQL 활용
 
+#### 순수 관계 연산자와 SQL 문장 비교
+- 순수관계연산자: 관계 데이터 베이스에 적용할 수 있도록 특별히 개발한 관계 연산자.
+- 순수관계연산자 종류: Select, Project, Join, Divisin
+- SELECT 연산은 WHERE 절로 구현
+- PROJECT 연산은 SELECT 절로 구현
+- (NATURAL) JOIN 연산은 다양한 JOIN 기능으로 구현
+- DIVIDE 연산은 현재 사용되지 않음
+
+#### INNER JOIN
+INNER JOIN 은 OUTER JOIN 과 대비하여 내부 JOIN 이라고 하며 JOIN 조건에서 동일한 값이 있는 행만 반환한다.
+
+#### USING JOIN
+```sql
+select a.col_nm1, b.col_nm2
+from table1 a inner join table2 b
+using (col_nm)
+```
+- natural join(from~ where로 묶는)과 함께 사용할 수 없다.(join~using 구문이라서)
+- using의 괄호 안에 alias 사용불가.
+
+#### CROSS JOIN
+- 테이블 간 JOIN 조건이 없는 경우 생길 수 있는 모든 데이터의 조합을 말한다. 결과는 양쪽 집합의 M*N건의 데이터 조합(카타시안 곱)이 발생한다.
+
+#### OUTER JOIN
+- LEFT OUTER JOIN
+  - 조인 수행시 먼저 표기된 좌측 테이블에 해당하는 데이터를 먼저 읽은 후, 나중 표기된 우측 테이블에서 JOIN 대상 데이터를 읽어 온다. 즉, Table A와 B가 있을 때 (Table 'A'가 기준), A와 B를 비교해서 B의 JOIN 칼럼에서 같은 값이 있을 때 그 해당 데이터를 가져오고, B의 JOIN 칼럼에서 같은 값이 없는 경우에는 B 테이블에서 가져오는 칼럼들은 NULL 값으로 채운다.
+
+- FULL OUTER JOIN
+  - 조인 수행시 좌측, 우측 테이블의 모든 데이터를 읽어 join하여 결과를 생성한다. 즉, table A와 B가 있을 때(table 'A', 'B' 모두 기준이 됨), RIGHT OUTER JOIN 과 LEFT OUTER JOIN 의 결과를 합집합으로 처리한 결과와 동일하다.
+
+
+작성중
+
+
 ### 3. SQL 최적화 기본원리
