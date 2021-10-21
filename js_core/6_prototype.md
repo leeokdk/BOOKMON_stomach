@@ -17,7 +17,7 @@ var instance = new Constructor();
 
 prototype이라는 프로퍼티와 __proto__라는 프로퍼티의 관계가 개념의 핵심.
 
-> 주의이모지 학습용으로 __proto__를 사용하는 것이지 현장에서는 직접 프로퍼티를 사용하지 않고
+> 🚨 학습용으로 __proto__를 사용하는 것이지 현장에서는 직접 프로퍼티를 사용하지 않고
 그 대신 Object.getPrototypeOf(), Object.create() 등을 이용한다.
 
 예제
@@ -54,7 +54,7 @@ var okdk = new Person('okdk');
 okdk.getName(); // okdk
 ```
 
-> 전구이모지 new 연산자로 Constructor를 호출하면 instance가 만들어지는데, 이 instance의 생략 가능한 프로퍼티인 __proto__는 Constructor의 prototype을 참조한다!
+> 💡 new 연산자로 Constructor를 호출하면 instance가 만들어지는데, 이 instance의 생략 가능한 프로퍼티인 __proto__는 Constructor의 prototype을 참조한다!
 
 더 자세히
 - 자바스크립트는 함수에 자동으로 객체인 prototype 프로퍼티를 생성한다.
