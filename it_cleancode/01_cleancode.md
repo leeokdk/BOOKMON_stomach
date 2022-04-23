@@ -12,10 +12,8 @@
 
 
 - **보이스카우트 규칙**
-> The Boy Scout Rule : "Always leave the campground cleaner than you found it."
+> The Boy Scout Rule : "Always leave the campground cleaner than you found it."<br>
 > 보이 스카웃 규칙 : 언제나 처음 왔을 때보다 깨끗하게 해놓고 캠프장을 떠날 것.
-[보이 스카웃 규칙](https://johngrib.github.io/wiki/Boy-Scout-Rule/)
-
 
 - **5S 원칙**
 1. `정리` 적절한 명명법 등과 같은 방법을 사용해 무엇이 어디에 있는지 알아야 한다.
