@@ -82,18 +82,14 @@
     ```
 - 굳이 이름에서 타입이나 접두어, 인터페이스 여부 등을 표현하지 않아도 된다.
 - 클래스의 이름: `명사`나 `명사구`를 사용. (Customer, WikiPage 등)
-- 메서드의 이름: `동사`나 `동사구`를 사용. (postPayment, deletePage 등)
-접근자(get-), 변경자(set-), 조건자(is-) 정도는 javabean 표준에 따라 사용하면 좋다.
-생성자를 중복정의 할 때에는 new로 정의하기보단 정적 팩토리 메서드를 사용하면 좋다.
-    - 
-        
-        ```java
-        // -- better
-        Complex fulcrumPoint = Complex.FromRealNumber(23.0);
-        
-        // -- than
-        Complex fulcrumPoint = new Complex(23.0);
-        ```
+- 메서드의 이름: `동사`나 `동사구`를 사용. (postPayment, deletePage 등) 접근자(get-), 변경자(set-), 조건자(is-) 정도는 javabean 표준에 따라 사용하면 좋다. 생성자를 중복정의 할 때에는 new로 정의하기보단 정적 팩토리 메서드를 사용하면 좋다.        
+    ```java
+    // -- better
+    Complex fulcrumPoint = Complex.FromRealNumber(23.0);
+    
+    // -- than
+    Complex fulcrumPoint = new Complex(23.0);
+    ```
         
 - 한 개념에는 하나의 단어만. 하지만 맥락이 다르면 다르게 짓자.
 - 맥락을 명확하게 해라.
